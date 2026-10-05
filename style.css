@@ -4,6 +4,26 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Fondos oscuros con transparencia (Glassmorphism) */
+    --bg-card: rgba(18, 26, 43, 0.7);
+    --bg-card-hover: rgba(26, 37, 62, 0.85);
+    /* Colores de Acento */
+    --accent-cyan: #06b6d4;
+
+    /* Textos */
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    /* Bordes sutiles (el estilo Glass) */
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(99, 102, 241, 0.5);
+    --border-glass: rgba(255, 255, 255, 0.12);
+    /* Curvas y Transiciones */
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 body {
     font-family: 'Outfit', sans-serif;
     background-color: #090d16;
@@ -22,13 +42,16 @@ header {
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px 50px;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 nav ul {
@@ -355,21 +378,17 @@ nav ul {
     color: #06b6d4;
 }
 
-/* --- ESTILOS GENERALES PARA TODAS LAS SECCIONES --- */
 .section {
     padding: 100px 0;
-    /* Da mucho aire (espacio) arriba y abajo de cada sección */
 }
 
-/* Centrar y limitar el ancho de los encabezados */
 .section-header {
     text-align: center;
     max-width: 600px;
     margin: 0 auto 60px auto;
-    /* Centra horizontalmente y da 60px de espacio abajo */
 }
 
-/* La etiquetita pequeña superior ("Conóceme", "Mis Habilidades", etc.) */
+
 .section-tag {
     display: inline-flex;
     align-items: center;
@@ -394,4 +413,75 @@ nav ul {
     color: #94a3b8;
     line-height: 1.6;
     font-size: 1.05rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    padding: 2.25rem;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    font-size: 1.05rem;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.stat-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.stat-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-focus);
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    color: var(--accent-cyan);
+    margin-bottom: 0.75rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
