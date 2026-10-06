@@ -306,10 +306,12 @@
                                 <button class="btn btn-secondary btn-sm" onclick="openProjectModal(1)">
                                     <i class="fa-solid fa-circle-info"></i> Detalles
                                 </button>
+                                <!--
                                 <a href="https://github.com/Tralph89/portafolioRafaDev" target="_blank"
                                     rel="noopener noreferrer" class="btn btn-secondary btn-sm">
                                     <i class="fa-brands fa-github"></i> Código
                                 </a>
+                                -->
                             </div>
                         </div>
                     </article>
@@ -334,7 +336,7 @@
                             </div>
 
                             <div class="project-overlay">
-                                <button class="btn btn-primary btn-sm" onclick="openProjectModal(1)">
+                                <button class="btn btn-primary btn-sm" onclick="openProjectModal(2)">
                                     <i class="fa-solid fa-eye"></i> Ver Caso de Estudio
                                 </button>
                             </div>
@@ -351,13 +353,65 @@
                                 Proyecto en construcción.
                             </p>
                             <div class="project-actions">
-                                <button class="btn btn-secondary btn-sm" onclick="openProjectModal(1)">
+                                <button class="btn btn-secondary btn-sm" onclick="openProjectModal(2)">
                                     <i class="fa-solid fa-circle-info"></i> Detalles
                                 </button>
+                                <!--
                                 <a href="https://github.com/Tralph89/portafolioRafaDev" target="_blank"
                                     rel="noopener noreferrer" class="btn btn-secondary btn-sm">
                                     <i class="fa-brands fa-github"></i> Código
                                 </a>
+                                -->
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-category="apps">
+                        <div class="project-visual">
+                            <div class="mockup-window">
+                                <div class="mockup-header">
+                                    <span class="mockup-dot dot-red"></span>
+                                    <span class="mockup-dot dot-yellow"></span>
+                                    <span class="mockup-dot dot-green"></span>
+                                </div>
+                                <div class="mockup-body mockup-ecommerce">
+                                    <div class="mockup-product-item">
+                                        <i class="fa-solid fa-bag-shopping" style="color: #6366f1;"></i>
+                                        <div class="mockup-product-bar"></div>
+                                    </div>
+                                    <div class="mockup-product-item">
+                                        <i class="fa-solid fa-tag" style="color: #8b5cf6;"></i>
+                                        <div class="mockup-product-bar" style="width: 45%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="project-overlay">
+                                <button class="btn btn-primary btn-sm" onclick="openProjectModal(3)">
+                                    <i class="fa-solid fa-eye"></i> Ver Caso de Estudio
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Próximamente</span>
+                                <span class="project-tag">Próximamente</span>
+                                <span class="project-tag">Próximamente</span>
+                            </div>
+                            <h3 class="project-title">Próximamente</h3>
+                            <p class="project-description">
+                                Proyecto en construcción.
+                            </p>
+                            <div class="project-actions">
+                                <button class="btn btn-secondary btn-sm" onclick="openProjectModal(3)">
+                                    <i class="fa-solid fa-circle-info"></i> Detalles
+                                </button>
+                                <!--
+                                <a href="https://github.com/Tralph89/portafolioRafaDev" target="_blank"
+                                    rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                                    <i class="fa-brands fa-github"></i> Código
+                                </a>
+                                -->
                             </div>
                         </div>
                     </article>
@@ -369,6 +423,47 @@
     <footer>
 
     </footer>
+    <div id="projectModal" class="modal-backdrop">
+        <div class="modal-content">
+            <button id="modalCloseBtn" class="modal-close-btn" aria-label="Cerrar modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span id="modalCategory" class="project-tag" style="margin-bottom: 0.75rem; display: inline-block;"></span>
+            <h3 id="modalTitle" class="section-title" style="font-size: 1.65rem; margin-bottom: 1rem;"></h3>
+
+            <p id="modalDescription" style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;"></p>
+
+            <div style="margin-bottom: 1.25rem;">
+                <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 0.35rem;">
+                    <i class="fa-solid fa-bullseye"></i> Desafío Técnico:
+                </h4>
+                <p id="modalProblem" style="font-size: 0.9rem; color: var(--text-secondary);"></p>
+            </div>
+
+            <div style="margin-bottom: 1.5rem;">
+                <h4 style="font-size: 0.95rem; font-weight: 600; color: var(--accent-emerald); margin-bottom: 0.35rem;">
+                    <i class="fa-solid fa-lightbulb"></i> Solución Implementada:
+                </h4>
+                <p id="modalSolution" style="font-size: 0.9rem; color: var(--text-secondary);"></p>
+            </div>
+
+            <div style="margin-bottom: 1.75rem;">
+                <h4
+                    style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.6rem;">
+                    Tecnologías Utilizadas:
+                </h4>
+                <div id="modalStack" class="project-tags"></div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; border-top: 1px solid var(--border-subtle); padding-top: 1.25rem;">
+                <a id="modalCodeLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"
+                    style="background: var(--gradient-accent); border: none; padding: 0.5rem 1rem; border-radius: 8px; color: white; text-decoration: none;">
+                    <i class="fa-brands fa-github"></i> Ver Código en GitHub
+                </a>
+            </div>
+        </div>
+    </div>
     <script src="./main.js"></script>
 </body>
 

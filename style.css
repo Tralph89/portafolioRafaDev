@@ -555,7 +555,6 @@ nav ul {
     background: rgba(99, 102, 241, 0.2);
 }
 
-/* Colores específicos de icono para cada tecnología */
 .icon-html {
     color: #f97316;
     background: rgba(249, 115, 22, 0.1);
@@ -636,7 +635,7 @@ nav ul {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
@@ -811,4 +810,67 @@ nav ul {
     margin-top: auto;
     padding-top: 1rem;
     border-top: 1px solid var(--border-subtle);
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.modal-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #111728;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-lg);
+    max-width: 650px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    transform: scale(0.95);
+    transition: transform var(--transition-normal);
+    position: relative;
+    padding: 2.25rem;
+}
+
+.modal-backdrop.open .modal-content {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all var(--transition-normal);
+}
+
+.modal-close-btn:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
 }
