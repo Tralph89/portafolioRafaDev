@@ -420,6 +420,102 @@
         </section>
 
     </main>
+
+    <!-- ==============================================================
+         SECCIÓN DE CONTACTO
+         ============================================================== -->
+    <section id="contacto" class="section">
+        <div class="container">
+
+            <div class="section-header">
+                <span class="section-tag"><i class="fa-regular fa-envelope"></i> ¿Hablamos?</span>
+                <h2 class="section-title">Iniciemos una Conversación</h2>
+                <p class="section-subtitle">
+                    ¿Tienes una vacante de desarrollador junior o deseas charlar sobre una oportunidad? Escríbeme y
+                    responderé lo antes posible.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+
+                <div class="contact-info">
+                    <div class="contact-intro-card">
+                        <h3>Disponible para contratación</h3>
+                        <p>
+                            Estoy listo para sumarme a un equipo donde pueda crecer y generar impacto positivo desde el
+                            primer día.
+                        </p>
+
+                        <div class="email-copy-box">
+                            <span id="emailText" class="email-address">jr.rafa2@gmail.com</span>
+                            <button id="btnCopyEmail" class="btn-copy" type="button" aria-label="Copiar correo">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>Copiar</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="contact-links-list">
+                        <a href="https://www.linkedin.com/in/rafaleyvag/" target="_blank" rel="noopener noreferrer"
+                            class="contact-link-item">
+                            <div class="contact-link-icon">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div class="contact-link-text">
+                                <h4>LinkedIn</h4>
+                                <span>Conectemos profesionalmente</span>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/Tralph89" target="_blank" rel="noopener noreferrer"
+                            class="contact-link-item">
+                            <div class="contact-link-icon">
+                                <i class="fa-brands fa-github"></i>
+                            </div>
+                            <div class="contact-link-text">
+                                <h4>GitHub</h4>
+                                <span>Explora mis repositorios</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <form id="contactForm" novalidate>
+                        <div class="form-group">
+                            <label for="name" class="form-label">Tu Nombre</label>
+                            <input type="text" id="name" class="form-input" placeholder="Ej. Carlos Martínez"
+                                required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" id="email" class="form-input" placeholder="Ej. carlos@empresa.com"
+                                required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Asunto</label>
+                            <input type="text" id="subject" class="form-input" placeholder="Ej. Oportunidad Frontend Jr"
+                                required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Mensaje</label>
+                            <textarea id="message" class="form-textarea"
+                                placeholder="Cuéntame sobre tu proyecto o vacante..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fa-regular fa-paper-plane"></i> Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <footer>
 
     </footer>
@@ -464,6 +560,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="./main.js"></script>
 </body>
 

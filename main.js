@@ -71,6 +71,107 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    /* ====================================================================
+       3. COPIAR CORREO AL PORTAPAPELES
+       ==================================================================== */
+    const btnCopyEmail = document.getElementById('btnCopyEmail');
+    const emailText = document.getElementById('emailText');
+
+    if (btnCopyEmail && emailText) {
+        btnCopyEmail.addEventListener('click', () => {
+            // navigator.clipboard es la API moderna de Javascript para el portapapeles
+            navigator.clipboard.writeText(emailText.textContent).then(() => {
+                // Guardamos el HTML original para volver a él después
+                const originalHTML = btnCopyEmail.innerHTML;
+                
+                // Cambiamos a estado de "Éxito"
+                btnCopyEmail.innerHTML = '<i class="fa-solid fa-check"></i><span>¡Copiado!</span>';
+                btnCopyEmail.style.background = 'rgba(34, 197, 94, 0.2)'; // Verde transparente
+                btnCopyEmail.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+                btnCopyEmail.style.color = '#22c55e'; // Letra verde
+                
+                // setTimeout es un temporizador. Regresa el botón a la normalidad en 2 segundos (2000ms)
+                setTimeout(() => {
+                    btnCopyEmail.innerHTML = originalHTML;
+                    btnCopyEmail.style = ''; // Borra los estilos en línea aplicados
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar el texto: ', err);
+            });
+        });
+    }
+
+    /* ====================================================================
+       4. VALIDACIÓN Y ENVÍO DE FORMULARIO CON EMAILJS
+       ==================================================================== */
+    // ====> ¡SOLO TE FALTA LA PUBLIC KEY! <====
+    const EMAILJS_PUBLIC_KEY = 'W6HvXEV5Keyy_CvIV'; 
+    const EMAILJS_SERVICE_ID = 'service_jthmjhr'; // El que tienes conectado a Gmail
+    const EMAILJS_TEMPLATE_ID = 'template_tbdsizi'; // El que acabas de crear
+
+    // Inicializamos EmailJS con tu Public Key
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+    }
+
+    const contactForm = document.getElementById('contactForm');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault(); 
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && subject && message) {
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                
+                // Cambiamos a estado "Enviando..."
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Enviando...';
+                submitBtn.disabled = true;
+
+                // Las variables que pusimos en tu plantilla de EmailJS
+                const templateParams = {
+                    from_name: name,
+                    reply_to: email,
+                    subject: subject,
+                    message: message
+                };
+
+                // Enviamos el correo 
+                emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+                    .then((response) => {
+                        console.log('ÉXITO!', response.status, response.text);
+                        submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> Mensaje Enviado';
+                        submitBtn.style.background = '#22c55e';
+                        submitBtn.style.borderColor = '#22c55e';
+                        
+                        contactForm.reset(); 
+                    })
+                    .catch((error) => {
+                        console.error('ERROR AL ENVIAR...', error);
+                        submitBtn.innerHTML = '<i class="fa-solid fa-xmark"></i> Error al Enviar';
+                        submitBtn.style.background = '#ef4444';
+                        submitBtn.style.borderColor = '#ef4444';
+                    })
+                    .finally(() => {
+                        setTimeout(() => {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.style.background = '';
+                            submitBtn.style.borderColor = '';
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    });
+
+            } else {
+                alert('Por favor, completa todos los campos.');
+            }
+        });
+    }
 }); // Fin del DOMContentLoaded
 /* ====================================================================
    3. MODAL DE PROYECTOS (ABRIR Y CARGAR DATOS)
